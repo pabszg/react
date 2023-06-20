@@ -1,0 +1,17 @@
+#hero {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  background-color: aliceblue;
+  flex-wrap: wrap;
+}
+
+h1 {
+    color: palegreen;
+  font-size: 30rem;
+  font-weight: 600;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
