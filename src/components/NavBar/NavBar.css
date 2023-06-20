@@ -10,4 +10,5 @@ ul {
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
+  text-transform: uppercase;
 }

@@ -6,9 +6,15 @@ const NavBar = () => {
   return (
     <div id="navbar">
       <ul>
-        <li>Home</li>
-        <li>Cat 1</li>
-        <li><AccountCircleOutlinedIcon></AccountCircleOutlinedIcon></li>
+        <li onClick={()=> {
+          document.reload();
+        }}>Home</li>
+        <li onClick={()=> {
+          document.reload();
+        }}>Sale</li>
+        <li onClick={()=> {
+          document.reload();
+        }}><AccountCircleOutlinedIcon></AccountCircleOutlinedIcon></li>
         <li><CartWidget /></li>
       </ul>
     </div>
