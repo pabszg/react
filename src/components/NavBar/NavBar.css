@@ -12,3 +12,6 @@ ul {
   align-items: center;
   text-transform: uppercase;
 }
+li {
+  transform-origin: 0 50%;
+}
