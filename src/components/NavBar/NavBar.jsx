@@ -1,20 +1,31 @@
-import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import CartWidget from "../CartWidget/CartWidget";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  console.log("NAV")
+  const [cart, setCart] = useState(1);
+
   return (
+    <>
     <div id="navbar">
       <ul>
-        <li>Home</li>
-        <li>Sale</li>
-        <li>New In</li>
-        <li><AccountCircleOutlinedIcon></AccountCircleOutlinedIcon></li>
+        <Link to="/">Home</Link>
+        <Link to="/categories/smartphones">Smartphones</Link>
+        <Link to="/categories/laptops">Laptops</Link>
+        <Link to="/categories/fragrances">Fragrances</Link>
+        <Link to="/categories/skincare">Skincare</Link>
+        <Link to="/categories/groceries">Groceries</Link>
         <li>
-          <CartWidget />
+          <CartWidget cart={cart} />
         </li>
       </ul>
     </div>
+    <Outlet />
+    </>
   );
 };
 

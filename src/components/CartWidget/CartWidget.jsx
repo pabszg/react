@@ -1,11 +1,10 @@
-import * as React from "react";
 import Badge from "@mui/material/Badge";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 
-const CartWidget = () => {
+const CartWidget = ({ cart }) => {
   return (
-    <Badge badgeContent={2} color="primary">
-      <ShoppingCartOutlinedIcon />
+    <Badge badgeContent={cart} color="primary">
+      <ShoppingBasketOutlinedIcon />
     </Badge>
   );
 };
