@@ -4,24 +4,24 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
+import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 
 const NavBar = () => {
-  console.log("NAV")
   const [cart, setCart] = useState(1);
 
   return (
     <>
     <div id="navbar">
       <ul>
-        <Link to="/">Home</Link>
+        <Link to="/"><CottageOutlinedIcon /></Link>
         <Link to="/categories/smartphones">Smartphones</Link>
         <Link to="/categories/laptops">Laptops</Link>
         <Link to="/categories/fragrances">Fragrances</Link>
         <Link to="/categories/skincare">Skincare</Link>
         <Link to="/categories/groceries">Groceries</Link>
-        <li>
+        <Link to="/cart">
           <CartWidget cart={cart} />
-        </li>
+        </Link>
       </ul>
     </div>
     <Outlet />

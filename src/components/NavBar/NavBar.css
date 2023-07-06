@@ -1,6 +1,8 @@
 #navbar {
-  height: 60px;
   font-family: Arial, Helvetica, sans-serif;
+}
+#navbar a:hover {
+  outline: 2px solid black 0 0 2px 0;
 }
 
 ul {
@@ -12,8 +14,5 @@ ul {
   align-items: center;
   text-transform: uppercase;
   padding: 20px;
-  gap: 0 20px;
-}
-li {
-  transform-origin: 0 50%;
+  gap: 30px;
 }

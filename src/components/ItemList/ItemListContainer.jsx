@@ -17,10 +17,8 @@ const ItemListContainer = () => {
   }, []);
   useEffect(()=> {
       cat === undefined ? setFilteredItems(items) : setFilteredItems(items.filter((item) => item.category === cat));
-  }, [cat])
-  console.log({filteredItems})
-
+  }, [cat, items])
+  
   return <ItemList items={filteredItems} category={cat} />;
 };
-
 export default ItemListContainer;

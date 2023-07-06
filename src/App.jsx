@@ -3,6 +3,7 @@ import "./App.css";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
 import NavBar from "./components/NavBar/NavBar";
 import ItemDetails from "./components/ItemDetails/ItemDetails";
+import NotFound from "./components/notFound/notFound";
 
 const App = () => {
   return (    
@@ -12,8 +13,8 @@ const App = () => {
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/categories/:cat" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<h1>NOT FOUND</h1>} />
       </Routes>
     </BrowserRouter>
   );
