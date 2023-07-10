@@ -31,12 +31,35 @@
   border-radius: 10px;
   padding: 20px;
   gap: 10px;
-  transition: ease all 0.8s;
+  transition: ease all 0.5s;
 }
+
+.card button {
+  border: 0;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  color: #1976d2;
+  background-color: white;
+  transition: ease all 0.1s;
+  outline: 1px solid #1976d2;
+  text-transform: uppercase;
+  flex-grow: 1;
+  width: 100%;
+  visibility: hidden;
+}
+
 .card:hover {
   box-shadow: 0px 20px 50px -15px #333;
   z-index: 1000;
 }
+
+.card:hover button {
+  visibility: visible;
+}
+
 .card h1 {
   font-size: 1rem;
 }
@@ -59,25 +82,4 @@
 .price {
   font-weight: 600;
   font-size: 1.3rem;
-}
-
-.card button {
-  border: 0;
-  padding: 12px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 0.8rem;
-  border-radius: 10px;
-  color: #1976d2;
-  background-color: white;
-  transition: ease all 0.2s;
-  outline: 1px solid #1976d2;
-  text-transform: uppercase;
-  flex-grow: 1;
-  width: 100%;
-}
-
-.card button:hover {
-  background-color: aliceblue;
-  outline: 3px solid blue;
 }
