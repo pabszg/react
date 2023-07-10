@@ -20,9 +20,7 @@ const ItemList = ({ items }) => {
               </div>
               <h1>{item.title}</h1>
               <p className="price">{euro.format(item.price)}</p>
-              <p>
-                <button>Add to Bag</button>
-              </p>
+              <button>Add to Bag</button>
             </div>
           </Link>
         );

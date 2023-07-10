@@ -21,16 +21,24 @@
   font-family: arial;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
   border: 1px solid #CCC;
   box-shadow: 0px 0px 15px -10px #333;
   flex-grow: 1;
   align-items: center;
   background-color: white;
   border-radius: 10px;
+  padding: 20px;
+  gap: 10px;
+  transition: ease all 0.8s;
+}
+.card:hover {
+  box-shadow: 0px 20px 50px -15px #333;
+  z-index: 1000;
 }
 .card h1 {
   font-size: 1rem;
-  margin: 5px;
 }
 .imgContainer {
   display: flex;
@@ -38,7 +46,6 @@
   align-items: center;
   height: 200px;
   width: 300px;
-  margin: 6px;
   overflow: hidden;
 }
 .card img {
@@ -52,7 +59,6 @@
 .price {
   font-weight: 600;
   font-size: 1.3rem;
-  margin: 6px;
 }
 
 .card button {
@@ -61,13 +67,14 @@
   text-align: center;
   cursor: pointer;
   font-size: 0.8rem;
-  margin: 6px;
   border-radius: 10px;
   color: #1976d2;
   background-color: white;
   transition: ease all 0.2s;
   outline: 1px solid #1976d2;
   text-transform: uppercase;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .card button:hover {

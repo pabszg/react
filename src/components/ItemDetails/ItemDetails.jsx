@@ -19,7 +19,7 @@ const ItemDetails = () => {
       .then((res) => res.json())
       .then((json) => {
       setItem(json);
-      setLoad(true);
+      setLoad(true)
       })
       .catch((error) => console.log(error))
   }, [id]);
@@ -43,8 +43,13 @@ const ItemDetails = () => {
       </div>
     );
   } else {
-    <Skeleton variant="text" sx={{ fontSize: '2rem' }} />
-  }
-};
+    return (
+      <div className="itemDescription">
+      <Skeleton variant="rectangular" width={400} height={300} />
+      <Skeleton variant="rectangular" width={400} height={300} />
+      <Skeleton variant="rectangular" width={400} height={300} />
+      </div>)
+      };
+    }
 
 export default ItemDetails;
