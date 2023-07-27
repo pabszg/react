@@ -55,3 +55,11 @@ button {
     outline: 1px solid #1976d2;
     text-transform: uppercase;
   }
+
+.counter {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+}
