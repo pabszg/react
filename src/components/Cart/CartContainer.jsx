@@ -4,12 +4,15 @@ import "./style.css";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const CartContainer = () => {
-  const { cart, clearCart, deleteById, total, onAdd, addToCart } = useContext(CartContext);
+  const { cart, clearCart, deleteById, onAdd, getTotalPrice, getTotalItems } = useContext(CartContext);
 
   let euro = new Intl.NumberFormat("es-ES", {
     style: "currency",
     currency: "EUR",
   });
+
+  let total = getTotalPrice()
+  let totalItems = getTotalItems()
 
   const increaseQty = (item)=> {
     item.quantity < item.stock ? onAdd(item, item.quantity + 1) : alert("supera el stock máximo")
@@ -31,7 +34,7 @@ const CartContainer = () => {
           <h2>{item.title}</h2>
           <p><b>{euro.format(item.price)}</b></p>
           <button onClick={()=> decreaseQty(item)}>
-            {item.quantity > 1 ? "-" : <DeleteOutlineOutlinedIcon fontSize="10px" />}
+            {item.quantity > 1 ? "-" : <DeleteOutlineOutlinedIcon fontSize="15px" />}
           </button>
           <p>{item.quantity}</p>
           <button onClick={()=> increaseQty(item)}>+</button>
@@ -43,7 +46,8 @@ const CartContainer = () => {
       }
       </div>
       <div id="cartCheckout">
-        <span>Subtotal: {euro.format(total)} {"("+ cart.length + ") items"}</span>
+        <span>Subtotal: {euro.format(total)}</span>
+        <span>{"("+ totalItems + ") items"}</span>
         <button>Checkout</button>
         <button onClick={()=> clearCart()}>Clear bag</button>
       </div>
