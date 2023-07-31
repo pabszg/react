@@ -15,7 +15,7 @@ const ItemListContainer = () => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((json) => setItems(json.products))
-      .then(setLoading(false))
+      .then(()=> setLoading(false))
       .catch((error) => console.log(error));
   }, []);
   useEffect(() => {
@@ -23,19 +23,19 @@ const ItemListContainer = () => {
       ? setFilteredItems(items)
       : setFilteredItems(items.filter((item) => item.category === cat));
   }, [cat, items]);
-  if (loading) {
-    return (
-      <div>
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-      </div>
-    );
-  } else {
-    return <ItemList items={filteredItems} category={cat} />;
-  }
+  return (loading ? (<div id="itemsContainer">
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+    <Skeleton variant="rectangular" width={295} height={340} />
+  </div>) : <ItemList items={filteredItems} category={cat} />)
 };
 export default ItemListContainer;

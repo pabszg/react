@@ -1,4 +1,7 @@
 import { createContext, useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
 
 export const CartContext = createContext();
 
@@ -8,6 +11,8 @@ const CartContextProvider = ({ children }) => {
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
+  const [message, setMessage] = useState("Added to bag");
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -27,16 +32,32 @@ const CartContextProvider = ({ children }) => {
           return e;
         }
       });
+      toast.success("Bag updated")
       setCart(newArray);
     } else {
       setCart([...cart, item]);
+      toast.success("Added to bag")
     }
   };
+  const getQtyById = (id) => {
+    const item = cart.find(item => item.id === id);
+    return item ? item.quantity : 0;
+  }
 
   const deleteById = (id) => {
-    let newCart = cart.filter((item) => item.id !== id);
-    setCart(newCart);
-  };
+    Swal.fire({
+      title: 'Eliminar?',
+      text: "Quieres quitar el producto de tu bolsa?",
+      showCancelButton: true,
+      confirmButtonColor: '#1976d2',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let newCart = cart.filter((item) => item.id !== id);
+        setCart(newCart)
+      }
+  })}
 
   const onAdd = (item, quant) => {
     let product = { ...item, quantity: quant };
@@ -45,8 +66,24 @@ const CartContextProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-    setCart([]);
-    localStorage.setItem("cart", []);
+    Swal.fire({
+      title: 'Seguro?',
+      text: "Te quedarás sin productos",
+      showCancelButton: true,
+      confirmButtonColor: '#1976d2',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setCart([]);
+        localStorage.setItem("cart", []);
+        Swal.fire(
+          'Cristal clear!',
+          'Your bag is empty',
+        )
+      }
+    })
   };
 
   const getTotalPrice = ()=> {
@@ -62,7 +99,7 @@ const CartContextProvider = ({ children }) => {
     return total
   }
 
-  let data = { cart, addToCart, clearCart, onAdd, deleteById, total, isInCart, getTotalPrice, getTotalItems };
+  let data = { cart, addToCart, clearCart, onAdd, deleteById, total, isInCart, getTotalPrice, getTotalItems, getQtyById };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

@@ -13,12 +13,12 @@ const NavBar = () => {
     <>
     <div id="navbar">
       <ul>
-        <Link to="/"><CottageOutlinedIcon /></Link>
-        <Link to="/categories/smartphones">Smartphones</Link>
-        <Link to="/categories/laptops">Laptops</Link>
-        <Link to="/categories/fragrances">Fragrances</Link>
-        <Link to="/categories/skincare">Skincare</Link>
-        <Link to="/categories/groceries">Groceries</Link>
+        <Link to="/">Todos</Link>
+        <Link activeClassName="activeNavLink" to="/categories/smartphones">Smartphones</Link>
+        <Link activeClassName="activeNavLink" to="/categories/laptops">Laptops</Link>
+        <Link activeClassName="activeNavLink" to="/categories/fragrances">Fragrances</Link>
+        <Link activeClassName="activeNavLink" to="/categories/skincare">Skincare</Link>
+        <Link activeClassName="activeNavLink" to="/categories/groceries">Groceries</Link>
         <Link to="/cart">
           <CartWidget cart={cart} />
         </Link>

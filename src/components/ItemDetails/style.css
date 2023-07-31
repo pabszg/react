@@ -19,8 +19,9 @@
     font-weight: 600;
 }
 .itemDescription h2 {
-    font-weight: 400;
-    color: #999;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
 }
 .productImages {
     display: flex;
@@ -38,28 +39,46 @@
     flex-basis: 100%;
 }
 .precio {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
-    color: #339999
+    color: #37505C;
+}
+.brand {
+    color: #333;
+    font-weight: 600;
 }
 button {
     border: 0;
-    padding: 12px;
+    padding: 15px 25px;
     text-align: center;
     cursor: pointer;
     font-size: 0.8rem;
     border-radius: 10px;
     color: #1976d2;
-    background-color: white;
+    background-color: #1976d2;
     transition: ease all 0.2s;
     outline: 1px solid #1976d2;
+    color: white;
     text-transform: uppercase;
   }
 
 .counter {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    gap: 10px;
     align-items: center;
+}
+.decrease {
+    border-radius: 5px 0 0 5px;
+    padding: 10px;
+    color: #333;
+    background-color: aliceblue;
+}
+.increase {
+    border-radius: 0 5px 5px 0;
+    padding: 10px;
+    color: #333;
+    background-color: aliceblue;
+}
+.quantity {
+    padding: 10px;
 }

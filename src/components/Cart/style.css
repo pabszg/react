@@ -4,6 +4,8 @@
     gap: 10px;
     padding: 25px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 h1 {
     font-size: 2.8rem;
@@ -14,26 +16,27 @@ h1 {
     flex: 1 1 auto;
 }
 #cartCheckout {
-    width: 400px;
     text-align: center;
     font-family: arial;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border: 1px solid #CCC;
-    box-shadow: 0px 0px 15px -10px #333;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid #EEE;
+    flex-grow: 0.5;
     align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     gap: 10px;
     transition: ease all 0.5s;
-    flex-grow: 1;
+    height: 400px;
+    gap: 20px;
+    min-width: 300px;
 }
 #cartDetails {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     gap: 10px;
 }
 .cartItem {
@@ -41,19 +44,19 @@ h1 {
     font-family: arial;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border: 1px solid #CCC;
-    box-shadow: 0px 0px 15px -10px #333;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    border: 1px solid #EEE;
     align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     gap: 10px;
     transition: ease all 0.5s;
+    flex-grow: 1;
 }
 .cartItem img {
-    width: 80px;
+    width: 100px;
     max-height: 80px;
 }
 .cartItem h2 {

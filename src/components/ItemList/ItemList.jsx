@@ -12,15 +12,18 @@ const ItemList = ({ items }) => {
   return (
     <div id="itemsContainer">
       {items.map((item) => {
+        console.log(item);
         return (
           <Link key={item.id} to={`/item/${item.id}`}>
             <div className="card">
               <div className="imgContainer">
                 <img src={item.images[0]} alt={item.title} width="100%" />
               </div>
-              <h2>{item.title}</h2>
-              <p className="price">{euro.format(item.price)}</p>
-              <button>See Details</button>
+              <div className="descContainer">
+                <p className="brand">{item.brand}</p>
+                <h2>{item.title}</h2>
+                <p className="price">{euro.format(item.price)}</p>
+              </div>
             </div>
           </Link>
         );
