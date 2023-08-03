@@ -35,7 +35,7 @@ const CartContainer = () => {
           {cart.map((item) => {
             return (
               <div className="cartItem" key={item.id}>
-                <Link to={`/item/${item.id}`}><img src={item.images[0]} alt={item.title} /></Link>
+                <Link to={`/item/${item.id}`}><img src={item.images[0]} alt={item.title} width={100}/></Link>
                 <h2 className="title">{item.title}</h2>
                 <div className="counter">
           <button className="decrease" onClick={() => decreaseQty(item)}>
@@ -72,10 +72,10 @@ const CartContainer = () => {
           })}
         </div>
         <div id="cartCheckout">
-          <span>Subtotal: {euro.format(total)}</span>
+          <span>Subtotal: <b>{euro.format(total)}</b></span>
           <span>{"(" + totalItems + ") items"}</span>
-          <button>Checkout</button>
-          <button onClick={() => clearCart()}>Clear bag</button>
+          <a href="/checkout"><button >Tramitar Compra</button></a>
+          <button onClick={() => clearCart()}>Vaciar bolsa</button>
         </div>
       </div>
     </>

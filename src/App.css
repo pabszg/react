@@ -28,7 +28,6 @@ a {
   font-weight: normal;
 }
 a:link, a:visited {
-  margin: auto 0px;
   text-decoration: none;
   color: inherit;
   text-align: center;

@@ -77,7 +77,8 @@ const ItemDetails = () => {
         <Typography variant="p">
           {loading ? <Skeleton /> : item.description}
         </Typography>
-        <div className="counter">
+        {item.stock > 0? (<>
+          <div className="counter">
           <button className="decrease" onClick={() => decreaseQty()}>
             -
           </button>
@@ -87,8 +88,9 @@ const ItemDetails = () => {
           </button>
         </div>
         <button id="cartUpdate" onClick={() => onAdd(item, quantity)}>
-          {isInCart(item.id) ? "Update Bag" : "Add to bag"}
+          {isInCart(item.id) ? (quantity === getQtyById(item.id)? "In bag" : "Update bag") : "Add to Bag"}
         </button>
+        </>) : ""}
         <Typography variant="p">
           {loading ? (
             <Skeleton />

@@ -2,7 +2,7 @@ import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 
@@ -14,11 +14,11 @@ const NavBar = () => {
     <div id="navbar">
       <ul>
         <Link to="/">Todos</Link>
-        <Link activeClassName="activeNavLink" to="/categories/smartphones">Smartphones</Link>
-        <Link activeClassName="activeNavLink" to="/categories/laptops">Laptops</Link>
-        <Link activeClassName="activeNavLink" to="/categories/fragrances">Fragrances</Link>
-        <Link activeClassName="activeNavLink" to="/categories/skincare">Skincare</Link>
-        <Link activeClassName="activeNavLink" to="/categories/groceries">Groceries</Link>
+        <NavLink to="/categories/smartphones">Smartphones</NavLink>
+        <NavLink to="/categories/laptops">Laptops</NavLink>
+        <NavLink to="/categories/fragrances">Fragrances</NavLink>
+        <NavLink to="/categories/skincare">Skincare</NavLink>
+        <NavLink to="/categories/groceries">Groceries</NavLink>
         <Link to="/cart">
           <CartWidget cart={cart} />
         </Link>

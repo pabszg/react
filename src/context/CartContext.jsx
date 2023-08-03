@@ -11,7 +11,6 @@ const CartContextProvider = ({ children }) => {
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
-  const [message, setMessage] = useState("Added to bag");
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -32,7 +31,7 @@ const CartContextProvider = ({ children }) => {
           return e;
         }
       });
-      toast.success("Bag updated")
+      item.quantity !== getQtyById(item.id) ? toast.success("Bag updated") : ""
       setCart(newArray);
     } else {
       setCart([...cart, item]);
@@ -78,9 +77,11 @@ const CartContextProvider = ({ children }) => {
       if (result.isConfirmed) {
         setCart([]);
         localStorage.setItem("cart", []);
-        Swal.fire(
-          'Cristal clear!',
-          'Your bag is empty',
+        Swal.fire({
+          title: 'Cristal clear!',
+          text: 'Your bag is empty',
+          confirmButtonColor: '#1976d2'
+        }
         )
       }
     })

@@ -3,6 +3,8 @@ import ItemList from "./ItemList";
 import "./style.css";
 import { useParams } from "react-router-dom";
 import { Skeleton } from "@mui/material";
+import { db } from "../../firebaseConfig.js"
+import { addDoc, collection } from "firebase/firestore" 
 
 const ItemListContainer = () => {
   const { cat } = useParams();
@@ -18,6 +20,7 @@ const ItemListContainer = () => {
       .then(()=> setLoading(false))
       .catch((error) => console.log(error));
   }, []);
+
   useEffect(() => {
     cat === undefined
       ? setFilteredItems(items)

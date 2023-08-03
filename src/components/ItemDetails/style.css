@@ -3,7 +3,7 @@
     flex-direction: row;
     padding: 50px ;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     font-family: Arial, Helvetica, sans-serif;
     flex-wrap: wrap;
@@ -13,7 +13,8 @@
     width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    align-items: flex-start;
 }
 .itemDescription h1 {
     font-weight: 600;
@@ -54,10 +55,8 @@ button {
     cursor: pointer;
     font-size: 0.8rem;
     border-radius: 10px;
-    color: #1976d2;
     background-color: #1976d2;
     transition: ease all 0.2s;
-    outline: 1px solid #1976d2;
     color: white;
     text-transform: uppercase;
   }
@@ -66,19 +65,23 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
+    outline: 1px solid #CCC;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0;
 }
 .decrease {
-    border-radius: 5px 0 0 5px;
     padding: 10px;
-    color: #333;
+    border-radius: 0;
     background-color: aliceblue;
+    color: #333;
 }
 .increase {
-    border-radius: 0 5px 5px 0;
     padding: 10px;
-    color: #333;
+    border-radius: 0;
     background-color: aliceblue;
+    color: #333;
 }
 .quantity {
-    padding: 10px;
+    padding: 0 10px;
 }
