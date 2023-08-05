@@ -12,9 +12,10 @@ const CheckoutFormik = ({ createOrder }) => {
   const [phone, setPhone] = useState("");
   const handlePhoneChange = (newPhone) => {
     setPhone(newPhone);
+    setFieldValue("phone", newPhone);
   };
 
-  const { handleSubmit, handleChange, handleBlur, errors } = useFormik({
+  const { handleSubmit, handleChange, handleBlur, errors, setFieldValue } = useFormik({
     initialValues: {
       name: "",
       phone: phone,
@@ -89,6 +90,9 @@ const CheckoutFormik = ({ createOrder }) => {
           helperText={
             matchIsValidTel(phone) ? "" : "Ingresa un número de teléfono válido"
           }
+          inputProps={{
+            maxLength: 20,
+          }}
         />
         <TextField
           label="Dirección de entrega"
@@ -111,6 +115,9 @@ const CheckoutFormik = ({ createOrder }) => {
           onChange={handleChange}
           onBlur={handleBlur}
           required={true}
+          inputProps={{
+            maxLength: 16,
+          }}
         />
           <TextField
           label="Vencimiento"
@@ -122,6 +129,9 @@ const CheckoutFormik = ({ createOrder }) => {
           onChange={handleChange}
           onBlur={handleBlur}
           required={true}
+          inputProps={{
+            maxLength: 5,
+          }}
         />
           <TextField
           label="CCV"
@@ -133,6 +143,9 @@ const CheckoutFormik = ({ createOrder }) => {
           onChange={handleChange}
           onBlur={handleBlur}
           required={true}
+          inputProps={{
+            maxLength: 3,
+          }}
         />
         <button type="submit">Procesar pago</button>
       </form>
