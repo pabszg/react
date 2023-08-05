@@ -100,7 +100,7 @@ const CartContextProvider = ({ children }) => {
     return total
   }
 
-  let data = { cart, addToCart, clearCart, onAdd, deleteById, total, isInCart, getTotalPrice, getTotalItems, getQtyById };
+  let data = { cart, addToCart, clearCart, onAdd, deleteById, total, isInCart, getTotalPrice, getTotalItems, getQtyById, setCart };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

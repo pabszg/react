@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./style.css";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2'
 
 const CartContainer = () => {
   const { cart, clearCart, deleteById, onAdd, getTotalPrice, getTotalItems } =
@@ -24,29 +23,37 @@ const CartContainer = () => {
       : toast.warning("Supera el stock máximo");
   };
   const decreaseQty = (item) => {
-    item.quantity > 1 ? onAdd(item, item.quantity - 1) : deleteById(item.id)
+    item.quantity > 1 ? onAdd(item, item.quantity - 1) : deleteById(item.id);
   };
 
   return (
-    <>
+    <div id="cartContainer">
       <h1>Shopping Bag</h1>
-      <div className="cartContainer">
+      {getTotalItems()>0? (<div className="cartContainer">
         <div id="cartDetails">
           {cart.map((item) => {
             return (
               <div className="cartItem" key={item.id}>
-                <Link to={`/item/${item.id}`}><img src={item.images[0]} alt={item.title} width={100}/></Link>
+                <Link to={`/item/${item.id}`}>
+                  <img src={item.images[0]} alt={item.title} width={100} />
+                </Link>
+                <h2 className="title">{item.brand}</h2>
                 <h2 className="title">{item.title}</h2>
                 <div className="counter">
-          <button className="decrease" onClick={() => decreaseQty(item)}>
-            -
-          </button>
-          <p className="quantity">{item.quantity}</p>
-          <button className="increase" onClick={() => increaseQty(item)}>
-            +
-          </button>
-        </div>
-
+                  <button
+                    className="decrease"
+                    onClick={() => decreaseQty(item)}
+                  >
+                    -
+                  </button>
+                  <p className="quantity">{item.quantity}</p>
+                  <button
+                    className="increase"
+                    onClick={() => increaseQty(item)}
+                  >
+                    +
+                  </button>
+                </div>
 
                 <p>
                   Total:{" "}
@@ -72,13 +79,17 @@ const CartContainer = () => {
           })}
         </div>
         <div id="cartCheckout">
-          <span>Subtotal: <b>{euro.format(total)}</b></span>
+          <span>
+            Subtotal: <b>{euro.format(total)}</b>
+          </span>
           <span>{"(" + totalItems + ") items"}</span>
-          <a href="/checkout"><button >Tramitar Compra</button></a>
+          <a href="/checkout">
+            <button>Tramitar Compra</button>
+          </a>
           <button onClick={() => clearCart()}>Vaciar bolsa</button>
         </div>
-      </div>
-    </>
+      </div>) : (<div className="emptyCart">No tienes artículos en la bolsa</div>)}
+    </div>
   );
 };
 

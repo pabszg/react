@@ -69,6 +69,7 @@ button {
     border-radius: 5px;
     overflow: hidden;
     padding: 0;
+    flex-shrink: 0;
 }
 .decrease {
     padding: 10px;

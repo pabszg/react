@@ -6,6 +6,8 @@ import { Skeleton, Typography } from "@mui/material";
 import { CartContext } from "../../context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { db } from "../../firebaseConfig.js";
+import { collection, getDoc, doc } from "firebase/firestore";
 
 const ItemDetails = () => {
   const { onAdd, isInCart, getQtyById } = useContext(CartContext);
@@ -32,29 +34,33 @@ const ItemDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setItem(json);
-        setLoading(false);
+    let itemsCollection = collection(db, "items");
+    let itemRef = doc(itemsCollection, id);
+    getDoc(itemRef)
+      .then((res) => {
+        setItem({id: res.id, ...res.data()});
+        console.log(item);
+        setLoading(false)
       })
-      .catch((error) => console.log(error));
   }, [id]);
 
-  useEffect(()=> {
-    loading ? setQuantity : (isInCart(item.id) ? setQuantity(getQtyById(item.id)) : setQuantity(1))
-  }, [loading])
+  useEffect(() => {
+    loading
+      ? setQuantity
+      : isInCart(item.id)
+      ? setQuantity(getQtyById(item.id))
+      : setQuantity(1);
+  }, [loading]);
 
   return (
     <div className="itemDescription">
       {loading ? (
         <div className="productImages">
-        <Skeleton variant="rectangular" width={500} height={300} />
-        <Skeleton variant="rectangular" width={150} height={100} />
-        <Skeleton variant="rectangular" width={150} height={100} />
-        <Skeleton variant="rectangular" width={150} height={100} />
+          <Skeleton variant="rectangular" width={500} height={300} />
+          <Skeleton variant="rectangular" width={150} height={100} />
+          <Skeleton variant="rectangular" width={150} height={100} />
+          <Skeleton variant="rectangular" width={150} height={100} />
         </div>
-
       ) : (
         item.images && (
           <div className="productImages">
@@ -77,20 +83,28 @@ const ItemDetails = () => {
         <Typography variant="p">
           {loading ? <Skeleton /> : item.description}
         </Typography>
-        {item.stock > 0? (<>
-          <div className="counter">
-          <button className="decrease" onClick={() => decreaseQty()}>
-            -
-          </button>
-          <p className="quantity">{loading ? <Skeleton /> : quantity}</p>
-          <button className="increase" onClick={() => increaseQty(item)}>
-            +
-          </button>
-        </div>
-        <button id="cartUpdate" onClick={() => onAdd(item, quantity)}>
-          {isInCart(item.id) ? (quantity === getQtyById(item.id)? "In bag" : "Update bag") : "Add to Bag"}
-        </button>
-        </>) : ""}
+        {item.stock > 0 ? (
+          <>
+            <div className="counter">
+              <button className="decrease" onClick={() => decreaseQty()}>
+                -
+              </button>
+              <p className="quantity">{loading ? <Skeleton /> : quantity}</p>
+              <button className="increase" onClick={() => increaseQty(item)}>
+                +
+              </button>
+            </div>
+            <button id="cartUpdate" onClick={() => onAdd(item, quantity)}>
+              {isInCart(item.id)
+                ? quantity === getQtyById(item.id)
+                  ? "In bag"
+                  : "Update bag"
+                : "Add to Bag"}
+            </button>
+          </>
+        ) : (
+          ""
+        )}
         <Typography variant="p">
           {loading ? (
             <Skeleton />
